@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 
 function App() {
   const [glassBlur, setGlassBlur] = useState(12);
-  const [glassOpacity, setGlassOpacity] = useState(0.25);
-  const [glassBorderOpacity, setGlassBorderOpacity] = useState(0.18);
+  const [glassOpacity, setGlassOpacity] = useState(0.28);
+  const [glassBorderOpacity, setGlassBorderOpacity] = useState(0.2);
   const [glassColor, setGlassColor] = useState('#141432');
 
   const [neoShadow, setNeoShadow] = useState(6);
@@ -39,66 +39,43 @@ function App() {
 }
     `;
 
-    const fullCss = glassCss + '\n' + neoCss;
+    const fullCss = glassCss.trim() + '\n\n' + neoCss.trim();
 
-    navigator.clipboard.writeText(fullCss.trim());
+    navigator.clipboard.writeText(fullCss);
     setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    setTimeout(() => setCopied(false), 2500);
   };
 
   return (
-    <div className="generator-container p-6 md:p-8 max-w-5xl mx-auto text-white">
-      <h1 className="text-3xl md:text-4xl font-bold mb-8 text-center tracking-tight">
+    <div className="generator-container p-6 max-w-5xl mx-auto text-white bg-black/10 backdrop-blur-lg rounded-3xl border border-cyan-500/20 shadow-xl">
+      <h1 className="text-3xl md:text-4xl font-bold mb-6 text-center tracking-tight drop-shadow-md">
         Glass & Neo Generator
       </h1>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-        {/* Glassmorphism Column */}
-        <div className="space-y-6 bg-black/10 backdrop-blur-md p-6 rounded-2xl border border-cyan-500/20">
-          <h2 className="text-2xl font-semibold text-cyan-400">Glassmorphism</h2>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {/* Glass Column */}
+        <div className="space-y-5">
+          <h2 className="text-xl font-semibold text-cyan-400">Glassmorphism</h2>
 
-          <div className="space-y-5">
+          <div className="space-y-4">
             <div>
               <label className="block text-sm mb-1">Blur: {glassBlur}px</label>
-              <input 
-                type="range" 
-                min="0" max="40" 
-                value={glassBlur} 
-                onChange={e => setGlassBlur(+e.target.value)}
-                className="w-full h-2 accent-cyan-500 bg-cyan-900/30 rounded-lg appearance-none cursor-pointer"
-              />
+              <input type="range" min="0" max="40" value={glassBlur} onChange={e => setGlassBlur(+e.target.value)} className="w-full h-2 accent-cyan-500 bg-cyan-900/30 rounded-lg cursor-pointer" />
             </div>
 
             <div>
               <label className="block text-sm mb-1">Opacity: {glassOpacity.toFixed(2)}</label>
-              <input 
-                type="range" 
-                min="0" max="0.6" step="0.01" 
-                value={glassOpacity} 
-                onChange={e => setGlassOpacity(+e.target.value)}
-                className="w-full h-2 accent-cyan-500 bg-cyan-900/30 rounded-lg appearance-none cursor-pointer"
-              />
+              <input type="range" min="0" max="0.5" step="0.01" value={glassOpacity} onChange={e => setGlassOpacity(+e.target.value)} className="w-full h-2 accent-cyan-500 bg-cyan-900/30 rounded-lg cursor-pointer" />
             </div>
 
             <div>
               <label className="block text-sm mb-1">Border opacity: {glassBorderOpacity.toFixed(2)}</label>
-              <input 
-                type="range" 
-                min="0" max="0.5" step="0.01" 
-                value={glassBorderOpacity} 
-                onChange={e => setGlassBorderOpacity(+e.target.value)}
-                className="w-full h-2 accent-cyan-500 bg-cyan-900/30 rounded-lg appearance-none cursor-pointer"
-              />
+              <input type="range" min="0" max="0.5" step="0.01" value={glassBorderOpacity} onChange={e => setGlassBorderOpacity(+e.target.value)} className="w-full h-2 accent-cyan-500 bg-cyan-900/30 rounded-lg cursor-pointer" />
             </div>
 
-            <div>
-              <label className="block text-sm mb-1">Background color</label>
-              <input 
-                type="color" 
-                value={glassColor} 
-                onChange={e => setGlassColor(e.target.value)}
-                className="w-12 h-10 rounded border border-cyan-500/40 bg-transparent cursor-pointer"
-              />
+            <div className="flex items-center gap-3">
+              <label className="text-sm">BG Color:</label>
+              <input type="color" value={glassColor} onChange={e => setGlassColor(e.target.value)} className="w-10 h-8 rounded border border-cyan-500/40 cursor-pointer" />
             </div>
           </div>
 
@@ -114,40 +91,24 @@ function App() {
           </div>
         </div>
 
-        {/* Neomorphism Column */}
-        <div className="space-y-6 bg-black/10 backdrop-blur-md p-6 rounded-2xl border border-pink-500/20">
-          <h2 className="text-2xl font-semibold text-pink-400">Neomorphism</h2>
+        {/* Neo Column */}
+        <div className="space-y-5">
+          <h2 className="text-xl font-semibold text-pink-400">Neomorphism</h2>
 
-          <div className="space-y-5">
+          <div className="space-y-4">
             <div>
               <label className="block text-sm mb-1">Shadow size: {neoShadow}px</label>
-              <input 
-                type="range" 
-                min="1" max="20" 
-                value={neoShadow} 
-                onChange={e => setNeoShadow(+e.target.value)}
-                className="w-full h-2 accent-pink-500 bg-pink-900/30 rounded-lg appearance-none cursor-pointer"
-              />
+              <input type="range" min="1" max="20" value={neoShadow} onChange={e => setNeoShadow(+e.target.value)} className="w-full h-2 accent-pink-500 bg-pink-900/30 rounded-lg cursor-pointer" />
             </div>
 
             <div className="flex items-center gap-3">
-              <input 
-                type="checkbox" 
-                checked={neoInset} 
-                onChange={e => setNeoInset(e.target.checked)}
-                className="accent-pink-500 w-5 h-5 cursor-pointer"
-              />
+              <input type="checkbox" checked={neoInset} onChange={e => setNeoInset(e.target.checked)} className="accent-pink-500 w-5 h-5 cursor-pointer" />
               <label className="text-sm">Inset / embossed</label>
             </div>
 
-            <div>
-              <label className="block text-sm mb-1">Base color</label>
-              <input 
-                type="color" 
-                value={neoColor} 
-                onChange={e => setNeoColor(e.target.value)}
-                className="w-12 h-10 rounded border border-pink-500/40 bg-transparent cursor-pointer"
-              />
+            <div className="flex items-center gap-3">
+              <label className="text-sm">Base color:</label>
+              <input type="color" value={neoColor} onChange={e => setNeoColor(e.target.value)} className="w-10 h-8 rounded border border-pink-500/40 cursor-pointer" />
             </div>
           </div>
 
@@ -160,25 +121,25 @@ function App() {
         </div>
       </div>
 
-      <div className="mt-8 flex flex-col items-center gap-6">
+      <div className="mt-8 flex flex-col items-center gap-4">
         <button 
           onClick={generateCss}
-          className="watch-btn px-10 py-4 text-lg font-bold"
+          className="watch-btn px-10 py-3 text-lg font-bold"
         >
           Generate & Copy CSS
         </button>
 
         {copied && (
-          <div className="text-cyan-400 font-medium animate-pulse">
+          <div className="text-green-400 font-medium animate-pulse">
             Copied to clipboard! ✓
           </div>
         )}
       </div>
 
       {generatedCss && (
-        <div className="mt-8">
-          <h3 className="text-xl mb-3 text-cyan-300 text-center">Generated CSS</h3>
-          <pre className="p-5 bg-black/30 rounded-2xl overflow-x-auto text-sm font-mono border border-cyan-500/20 whitespace-pre-wrap">
+        <div className="mt-6">
+          <h3 className="text-lg mb-2 text-cyan-300 text-center">Generated CSS – ready to paste</h3>
+          <pre className="p-4 bg-black/30 rounded-xl overflow-x-auto text-sm font-mono border border-cyan-500/20 whitespace-pre-wrap">
             {generatedCss}
           </pre>
         </div>
