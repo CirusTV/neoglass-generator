@@ -47,14 +47,14 @@ function App() {
   };
 
   return (
-    <div className="generator-container p-6 max-w-5xl mx-auto text-white bg-black/10 backdrop-blur-lg rounded-3xl border border-cyan-500/20 shadow-xl">
+    <div className="generator-container p-6 max-w-5xl mx-auto text-white bg-black/15 backdrop-blur-xl rounded-3xl border border-cyan-500/30 shadow-2xl">
       <h1 className="text-3xl md:text-4xl font-bold mb-6 text-center tracking-tight drop-shadow-md">
         Glass & Neo Generator
       </h1>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10">
         {/* Glass Column */}
-        <div className="space-y-5">
+        <div className="space-y-5 bg-black/10 backdrop-blur-md p-5 rounded-2xl border border-cyan-500/20">
           <h2 className="text-xl font-semibold text-cyan-400">Glassmorphism</h2>
 
           <div className="space-y-4">
@@ -75,7 +75,7 @@ function App() {
 
             <div className="flex items-center gap-3">
               <label className="text-sm">BG Color:</label>
-              <input type="color" value={glassColor} onChange={e => setGlassColor(e.target.value)} className="w-10 h-8 rounded border border-cyan-500/40 cursor-pointer" />
+              <input type="color" value={glassColor} onChange={e => setGlassColor(e.target.value)} className="w-10 h-8 rounded border border-cyan-500/40 cursor-pointer bg-transparent" />
             </div>
           </div>
 
@@ -92,7 +92,7 @@ function App() {
         </div>
 
         {/* Neo Column */}
-        <div className="space-y-5">
+        <div className="space-y-5 bg-black/10 backdrop-blur-md p-5 rounded-2xl border border-pink-500/20">
           <h2 className="text-xl font-semibold text-pink-400">Neomorphism</h2>
 
           <div className="space-y-4">
@@ -108,7 +108,7 @@ function App() {
 
             <div className="flex items-center gap-3">
               <label className="text-sm">Base color:</label>
-              <input type="color" value={neoColor} onChange={e => setNeoColor(e.target.value)} className="w-10 h-8 rounded border border-pink-500/40 cursor-pointer" />
+              <input type="color" value={neoColor} onChange={e => setNeoColor(e.target.value)} className="w-10 h-8 rounded border border-pink-500/40 cursor-pointer bg-transparent" />
             </div>
           </div>
 
@@ -124,21 +124,21 @@ function App() {
       <div className="mt-8 flex flex-col items-center gap-4">
         <button 
           onClick={generateCss}
-          className="watch-btn px-10 py-3 text-lg font-bold"
+          className="watch-btn px-10 py-3 text-lg font-bold shadow-lg hover:shadow-2xl transition-all"
         >
           Generate & Copy CSS
         </button>
 
         {copied && (
           <div className="text-green-400 font-medium animate-pulse">
-            Copied to clipboard! ✓
+            Copied! ✓ Ready to paste
           </div>
         )}
       </div>
 
       {generatedCss && (
         <div className="mt-6">
-          <h3 className="text-lg mb-2 text-cyan-300 text-center">Generated CSS – ready to paste</h3>
+          <h3 className="text-lg mb-2 text-cyan-300 text-center">Generated CSS – ready to use</h3>
           <pre className="p-4 bg-black/30 rounded-xl overflow-x-auto text-sm font-mono border border-cyan-500/20 whitespace-pre-wrap">
             {generatedCss}
           </pre>
