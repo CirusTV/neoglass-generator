@@ -45,8 +45,8 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-transparent p-6">
-      <div className="max-w-5xl mx-auto bg-black/20 backdrop-blur-xl rounded-3xl border border-cyan-500/20 shadow-2xl overflow-hidden">
+    <div className="min-h-screen bg-transparent">
+      <div className="max-w-5xl mx-auto bg-black/25 backdrop-blur-2xl rounded-3xl border border-cyan-500/25 shadow-2xl overflow-hidden m-4 md:m-8">
         <div className="p-6 md:p-8">
           <h1 className="text-3xl md:text-4xl font-bold mb-6 text-center text-white drop-shadow-lg">
             Glass & Neo Generator
@@ -54,7 +54,7 @@ function App() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10">
             {/* Glass */}
-            <div className="space-y-5">
+            <div className="space-y-5 bg-black/15 backdrop-blur-md p-5 rounded-2xl border border-cyan-500/20">
               <h2 className="text-xl font-semibold text-cyan-400">Glassmorphism</h2>
 
               <div className="space-y-4">
@@ -92,7 +92,7 @@ function App() {
             </div>
 
             {/* Neo */}
-            <div className="space-y-5">
+            <div className="space-y-5 bg-black/15 backdrop-blur-md p-5 rounded-2xl border border-pink-500/20">
               <h2 className="text-xl font-semibold text-pink-400">Neomorphism</h2>
 
               <div className="space-y-4">
